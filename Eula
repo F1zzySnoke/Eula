@@ -1,0 +1,25 @@
+package me.f1zzysnoke.eula;
+
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.plugin.java.JavaPlugin;
+
+public final class Eula extends JavaPlugin {
+    public class EulaABar implements Listener {
+        @EventHandler
+        public void player(PlayerJoinEvent e) {
+            Player player = e.getPlayer();
+            player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§cНе является официальным сервером Mojang"));
+        }
+    }
+
+    @Override
+    public void onEnable() {
+        Bukkit.getPluginManager().registerEvents(new EulaABar(), this);
+    }
+}
